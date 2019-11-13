@@ -1,0 +1,12 @@
+import boto3
+ec2 = boto3.resource('ec2')
+instance = ""
+def lambda_handler(event, context):
+    instance = ec2.create_instances(
+        ImageId = '<latestAMIOfChoice>',
+        MinCount = 1,
+        MaxCount = 1,
+        InstanceType = '<instanceType>,
+        KeyName = '<keyPairName>',
+        SubnetId = '<subnetID>')
+print (instance[0].id)
