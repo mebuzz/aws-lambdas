@@ -1,0 +1,18 @@
+
+
+#remove tags from acm
+#tested with Python3.7 runtime
+import boto3
+acm = boto3.client('acm')
+response = ""
+def lambda_handler(event, context):
+  response = acm.remove_tags_from_certificate(
+    CertificateArn='<certARN>',
+    Tags=[
+        {
+            'Key': '<TagKey1>',
+            'Value': '<TagValue1>'
+        }
+    ]
+)
+print(response)
