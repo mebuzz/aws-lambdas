@@ -1,0 +1,20 @@
+#Tag ACM certs
+#works with python 3.7 runtime
+import boto3
+acm = boto3.client('acm')
+
+def lambda_handler(event, context):
+  response = acm.add_tags_to_certificate(
+      CertificateArn='<arnOfCertificate>',
+      Tags=[
+          {
+              'Key': '<TagKey1>',
+              'Value': '<TagValue1>'
+          },
+          {
+              'Key': '<TagKey2'>,
+              'Value': '<TagValue2>'
+          },
+      ]
+  )
+print(response)
