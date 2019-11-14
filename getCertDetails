@@ -1,0 +1,9 @@
+#Tested with Python 3.7
+
+import boto3
+acm = boto3.client('acm')
+response = ""
+def lambda_handler(event, context):
+    response = acm.get_certificate(
+        CertificateArn="<certARN>")
+print(response)
