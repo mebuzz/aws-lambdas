@@ -1,0 +1,11 @@
+import boto3
+from botocore.exceptions import  ClientError
+ec2 = boto3.client('ec2')
+response = ""
+
+def lambda_handler(event, context):
+    try:
+        response = ec2.delete_security_group(GroupId='<securityGroupId>')
+        print('Security Group Deleted')
+    except ClientError as e:
+        print (e)
